@@ -1,0 +1,19 @@
+<h3>Bucket list</h3>
+<div *ngIf="isBucketListVisible">
+  <storage-bucket-create></storage-bucket-create>
+  <div *ngIf="buckets && buckets.buckets">
+    All Buckets ({{buckets.buckets.length}})
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+      </tr>
+      <tr *ngFor="let bucket of buckets.buckets" (click)="onBucket(bucket)">
+        <td>{{bucket.name}}</td>
+        <td>{{bucket.location.name}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<storage-bucket-details [bucket]="selectedBucket" *ngIf="onBucketDetails"></storage-bucket-details>
+<storage-object-list *ngIf="!isBucketListVisible"></storage-object-list>

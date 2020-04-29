@@ -1,0 +1,17 @@
+<h3>Bucket details</h3>
+<button (click)="onBucketDelete = true">Delete Bucket</button>
+<table>
+  <tr>
+    <td>Bucket name:</td>
+    <td>{{bucket && bucket.name}}</td>
+  </tr>
+  <tr>
+    <td>Location:</td>
+    <td>{{bucket && bucket.location && bucket.location.name}}</td>
+  </tr>
+  <tr>
+    <td>Storage size:</td>
+    <td>{{bucket && bucket.size}}</td>
+  </tr>
+</table>
+<storage-modal-bucket-delete *ngIf="onBucketDelete" [bucket]="bucket"></storage-modal-bucket-delete>

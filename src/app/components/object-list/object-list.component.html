@@ -1,0 +1,25 @@
+<div>
+  <h3>Files</h3>
+  <button (click)="onObjectDelete = true">Delete Object</button><button>Upload Object</button>
+  <div class="row" *ngIf="objects && objects.objects">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Last modified</th>
+        <th>Size</th>
+      </tr>
+      <tr *ngFor="let object of objects.objects">
+        <td>
+          <a>{{object.name}}</a>
+        </td>
+        <td>
+          <p>{{object.modified}}</p>
+        </td>
+        <td>
+          <p>{{object.size}}</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<storage-modal-object-delete *ngIf="onObjectDelete"></storage-modal-object-delete>

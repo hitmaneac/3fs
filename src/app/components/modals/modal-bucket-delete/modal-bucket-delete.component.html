@@ -1,0 +1,5 @@
+<div *ngIf="isBucketDeleteModalVisible">
+  <p>Do you really want to delete this bucket?</p>
+  <button (click)="onDelete()">Yes</button>
+  <button (click)="isBucketDeleteModalVisible = false">No</button>
+</div>
