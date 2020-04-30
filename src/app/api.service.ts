@@ -36,6 +36,6 @@ export class ApiService {
     return this.http.delete(`${this.url}/buckets/${bucketId}/objects/${objectId}`, this.authorizationHeader);
   }
   createObject(bucketId, data) {
-    return this.http.post(`${this.url}/${bucketId}/objects`, data, this.authorizationHeader);
+    return this.http.post(`${this.url}/buckets/${bucketId}/objects`, data, this.authorizationHeader);
   }
 }

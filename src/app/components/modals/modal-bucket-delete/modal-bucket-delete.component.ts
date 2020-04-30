@@ -1,24 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { ApiService } from '../../../api.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'storage-modal-bucket-delete',
-  templateUrl: './modal-bucket-delete.component.html',
-  styleUrls: ['./modal-bucket-delete.component.scss']
+  templateUrl: './modal-bucket-delete.component.html'
 })
-export class ModalBucketDeleteComponent implements OnInit {
+export class ModalBucketDeleteComponent {
   @Input() bucket;
+
   isBucketDeleteModalVisible = true;
   constructor(private API: ApiService) { }
 
-  ngOnInit(): void {
-    console.log('delete bucket: ', this.bucket);
-  }
-
   onDelete() {
     this.API.deleteBucket(this.bucket.id).subscribe((data) => {
-      console.log('Done', data);
       this.isBucketDeleteModalVisible = false;
+      location.reload();
     });
   }
 }

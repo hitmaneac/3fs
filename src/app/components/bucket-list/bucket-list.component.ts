@@ -4,13 +4,13 @@ import { Buckets } from '../../models/buckets.model';
 
 @Component({
   selector: 'storage-bucket-list',
-  templateUrl: './bucket-list.component.html',
-  styleUrls: ['./bucket-list.component.scss']
+  templateUrl: './bucket-list.component.html'
 })
 export class BucketListComponent implements OnInit {
   buckets;
   isBucketListVisible = true;
   selectedBucket;
+  menu = 1;
   onBucketDetails = false;
   constructor(private API: ApiService) { }
 

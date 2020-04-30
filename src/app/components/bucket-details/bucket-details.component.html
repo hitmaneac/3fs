@@ -1,5 +1,5 @@
 <h3>Bucket details</h3>
-<button (click)="onBucketDelete = true">Delete Bucket</button>
+<button (click)="onBucketDelete = true" class="btn btn-primary">Delete Bucket</button>
 <table>
   <tr>
     <td>Bucket name:</td>
@@ -11,7 +11,8 @@
   </tr>
   <tr>
     <td>Storage size:</td>
-    <td>{{bucket && bucket.size}}</td>
+    <td>{{size}}</td>
   </tr>
 </table>
-<storage-modal-bucket-delete *ngIf="onBucketDelete" [bucket]="bucket"></storage-modal-bucket-delete>
+<storage-modal-bucket-delete *ngIf="onBucketDelete" [bucket]="bucket">
+</storage-modal-bucket-delete>

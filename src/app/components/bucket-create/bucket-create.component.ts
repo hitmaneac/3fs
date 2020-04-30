@@ -4,8 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'storage-bucket-create',
-  templateUrl: './bucket-create.component.html',
-  styleUrls: ['./bucket-create.component.scss']
+  templateUrl: './bucket-create.component.html'
 })
 export class BucketCreateComponent implements OnInit {
   data;
@@ -25,5 +24,6 @@ export class BucketCreateComponent implements OnInit {
 
   onSubmit(data): void {
     this.API.createBucket({ name: data.name, location: data.location }).subscribe(() => location.reload());
+    this.createIsClosed = true;
   }
 }

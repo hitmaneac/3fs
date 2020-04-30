@@ -1,5 +1,5 @@
-<div *ngIf="isBucketDeleteModalVisible">
+<div class="modal-float" *ngIf="isBucketDeleteModalVisible">
   <p>Do you really want to delete this bucket?</p>
-  <button (click)="onDelete()">Yes</button>
-  <button (click)="isBucketDeleteModalVisible = false">No</button>
+  <button (click)="onDelete()" class="btn btn-primary">Yes</button>
+  <button (click)="isBucketDeleteModalVisible = false" class="btn btn-default">No</button>
 </div>

@@ -1,19 +1,27 @@
-<h3>Bucket list</h3>
-<div *ngIf="isBucketListVisible">
-  <storage-bucket-create></storage-bucket-create>
-  <div *ngIf="buckets && buckets.buckets">
-    All Buckets ({{buckets.buckets.length}})
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Location</th>
-      </tr>
-      <tr *ngFor="let bucket of buckets.buckets" (click)="onBucket(bucket)">
-        <td>{{bucket.name}}</td>
-        <td>{{bucket.location.name}}</td>
-      </tr>
-    </table>
+<div class="container">
+  <button class="btn btn-primary"
+    (click)="isBucketListVisible = !isBucketListVisible">{{isBucketListVisible ? 'Buckets' : 'Objects'}}</button>
+  <div *ngIf="isBucketListVisible">
+    <storage-bucket-create class="float-right"></storage-bucket-create>
+    <div *ngIf="buckets && buckets.buckets">
+      All Buckets ({{buckets.buckets.length}})
+      <table class="table table-striped table-bordered table-hover table-condensed">
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+        </tr>
+        <tr *ngFor="let bucket of buckets.buckets" (click)="onBucket(bucket)" class="clickable">
+          <td>{{bucket.name}}</td>
+          <td>{{bucket.location.name}}</td>
+        </tr>
+      </table>
+    </div>
   </div>
+  <ul class="nav nav-tabs" *ngIf="!isBucketListVisible">
+    <li><a class="nav-item nav-link" href="#" (click)="menu = 1">Files</a></li>
+    <li><a class="nav-item nav-link" href="#" (click)="menu = 2">Bucket Details</a></li>
+  </ul>
+  <storage-bucket-details [bucket]="selectedBucket" *ngIf="!isBucketListVisible && onBucketDetails && menu == 2">
+  </storage-bucket-details>
+  <storage-object-list *ngIf="!isBucketListVisible && menu == 1" [bucketId]="selectedBucket.id"></storage-object-list>
 </div>
-<storage-bucket-details [bucket]="selectedBucket" *ngIf="onBucketDetails"></storage-bucket-details>
-<storage-object-list *ngIf="!isBucketListVisible"></storage-object-list>

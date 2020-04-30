@@ -1,29 +1,31 @@
-<button *ngIf="createIsClosed" (click)="createIsClosed = false">Create New Bucket</button>
-<div *ngIf="!createIsClosed && data && data.locations">
-  <h6>Create new bucket</h6>
-  <form [formGroup]="createBucketForm" (ngSubmit)="onSubmit(createBucketForm.value)">
-    <table>
-      <tr>
-        <td>
-          <label>Bucket name*</label>
-        </td>
-        <td>
-          <label>Location*</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input formControlName="name">
-        </td>
-        <td>
-          <select formControlName="location">
-            <option *ngFor="let location of data.locations; let i = index" [ngValue]="location.id">
-              {{location.name}}
-            </option>
-          </select>
-        </td>
-      </tr>
-    </table>
-    <button class=" button" type="submit" (click)="createIsClosed = true">Create Bucket</button>
-  </form>
+<div class="padded">
+  <button *ngIf="createIsClosed" (click)="createIsClosed = false" class="btn btn-primary">Create New Bucket</button>
+  <div *ngIf="!createIsClosed && data && data.locations" class="form-group">
+    <h6>Create new bucket</h6>
+    <form [formGroup]="createBucketForm" (ngSubmit)="onSubmit(createBucketForm.value)">
+      <table>
+        <tr>
+          <td>
+            <label>Bucket name*</label>
+          </td>
+          <td>
+            <label>Location*</label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input formControlName="name" class="form-control">
+          </td>
+          <td>
+            <select formControlName="location" class="form-control">
+              <option *ngFor="let location of data.locations; let i = index" [ngValue]="location.id">
+                {{location.name}}
+              </option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      <button class="btn btn-primary" type="submit">Create Bucket</button>
+    </form>
+  </div>
 </div>

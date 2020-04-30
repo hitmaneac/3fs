@@ -1,6 +1,5 @@
-<hr>
-<div>
+<div class="modal-float" *ngIf="isObjectDeleteModalVisible">
   <p>Do you really want to delete this object?</p>
-  <button>Yes</button>
-  <button>No</button>
+  <button (click)="deleteObject()" class="btn btn-primary">Yes</button>
+  <button (click)="isObjectDeleteModalVisible = false" class="btn btn-default">No</button>
 </div>
